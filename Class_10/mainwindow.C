@@ -22,6 +22,7 @@ void MainWindow::on_button_ok_clicked()
     ui->statusbar->showMessage("Nome:"+ui->txt_name->text()+" | E-mail: "+ui->txt_email->text());
     ui->txt_name->clear();
     ui->txt_email->clear();
+    ui->txt_name->setFocus();
 }
 
 void MainWindow::on_pushButton_clicked()
