@@ -24,7 +24,6 @@ void MainWindow::on_button_ok_clicked()
     ui->txt_email->clear();
 }
 
-
 void MainWindow::on_pushButton_clicked()
 {
     QString msg = "github.com/guiipedroso";
