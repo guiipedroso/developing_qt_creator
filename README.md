@@ -5,4 +5,4 @@
 <br>
 <br>
 
-<h1> Developing QT Creator </h1>
+<h1 align="center"> Developing QT Creator </h1>
