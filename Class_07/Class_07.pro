@@ -10,15 +10,18 @@ CONFIG += c++11
 
 SOURCES += \
     janela.C \
+    janela3.C \
     main.C \
     mainwindow.C
 
 HEADERS += \
     janela.h \
+    janela3.h \
     mainwindow.h
 
 FORMS += \
     janela.ui \
+    janela3.ui \
     mainwindow.ui
 
 # Default rules for deployment.
