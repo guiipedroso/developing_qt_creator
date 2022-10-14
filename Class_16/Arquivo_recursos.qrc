@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>cursors/icons8-add-file-50.png</file>
+        <file>cursors/icons8-downloads-folder-50.png</file>
+        <file>cursors/icons8-edit-50.png</file>
+        <file>cursors/icons8-search-more-30.png</file>
+        <file>cursors/icons8-trash-can-50.png</file>
+        <file>cursors/icons8-save-50.png</file>
+    </qresource>
+</RCC>
