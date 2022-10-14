@@ -67,6 +67,18 @@
         </tr>
         <tr align="middle"> 
             <td text-aling="center">13</td>
+            <td>HTML/CSS</td>
+        </tr>
+        <tr align="middle">
+            <td text-aling="center">14</td>
+            <td></td>
+        </tr>
+        <tr align="middle">
+            <td text-aling="center">15</td>
+            <td></td>
+        </tr>
+        <tr align="middle">
+            <td text-aling="center">16</td>
             <td></td>
         </tr>
     </table>
