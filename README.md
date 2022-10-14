@@ -79,7 +79,7 @@
         </tr>
         <tr align="middle">
             <td text-aling="center">16</td>
-            <td>Menu bar/tool</td>
+            <td>Menu Bar/Tool</td>
         </tr>
     </table>
     </body>
