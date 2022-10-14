@@ -71,11 +71,11 @@
         </tr>
         <tr align="middle">
             <td text-aling="center">14</td>
-            <td></td>
+            <td>Checkbox</td>
         </tr>
         <tr align="middle">
             <td text-aling="center">15</td>
-            <td></td>
+            <td>RadioButton</td>
         </tr>
         <tr align="middle">
             <td text-aling="center">16</td>
