@@ -89,6 +89,10 @@
             <td text-aling="center">18</td>
             <td>ListWidget</td>
         </tr>
+        <tr align="middle">
+            <td text-aling="center">19</td>
+            <td>TagWidget</td>
+        </tr>
 
     </table>
     </body>
