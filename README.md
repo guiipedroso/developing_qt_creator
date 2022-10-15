@@ -82,9 +82,14 @@
             <td>Menu Bar/Tool</td>
         </tr>
         <tr align="middle">
-            <td text-aling="center">16</td>
+            <td text-aling="center">17</td>
             <td>ComboBox</td>
         </tr>
+        <tr align="middle">
+            <td text-aling="center">18</td>
+            <td>ListWidget</td>
+        </tr>
+
     </table>
     </body>
 </html>
