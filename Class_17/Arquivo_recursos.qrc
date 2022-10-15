@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>langs/icons8-c-plus-plus-64.png</file>
+        <file>langs/icons8-java-50.png</file>
+        <file>langs/icons8-php-48.png</file>
+        <file>langs/icons8-python-48.png</file>
+        <file>langs/icons8-qt-50.png</file>
+    </qresource>
+</RCC>
