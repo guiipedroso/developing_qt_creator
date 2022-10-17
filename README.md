@@ -101,6 +101,15 @@
             <td text-aling="center">21</td>
             <td>QTimer</td>
         </tr>
+        <tr align="middle">
+            <td text-aling="center">22</td>
+            <td>QTime</td>
+        </tr>
+        <tr align="middle">
+            <td text-aling="center">23</td>
+            <td>QDesktopServices</td>
+        </tr>
+
     </table>
     </body>
 </html>
