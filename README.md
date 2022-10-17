@@ -93,7 +93,14 @@
             <td text-aling="center">19</td>
             <td>TagWidget</td>
         </tr>
-
+        <tr align="middle">
+            <td text-aling="center">20</td>
+            <td>File and directory</td>
+        </tr>
+        <tr align="middle">
+            <td text-aling="center">21</td>
+            <td>QTimer</td>
+        </tr>
     </table>
     </body>
 </html>
