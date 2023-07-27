@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sys_oper/windows.png</file>
+        <file>sys_oper/macos.png</file>
+        <file>sys_oper/linux.png</file>
+        <file>sys_oper/freebsd.png</file>
+    </qresource>
+</RCC>
