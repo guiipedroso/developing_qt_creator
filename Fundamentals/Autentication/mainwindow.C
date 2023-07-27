@@ -21,6 +21,15 @@ void MainWindow::on_btn_send_clicked()
     if(ui->line_login->text() == "guiipedroso@gmail.com" && ui->line_senha->text() == "teste123")
       {
         QMessageBox::information(this, "Home", "Sucess login");
+
+        if(ui->check_login->isChecked())
+          {
+            ui->statusbar->showMessage("Checkbox marcado!");
+          }
+        else
+          {
+            ui->statusbar->showMessage("Nao marcado checkbox!");
+          }
       }
     else
       {
@@ -29,5 +38,18 @@ void MainWindow::on_btn_send_clicked()
         ui->line_senha->clear();
       }
 
+}
+
+
+void MainWindow::on_check_login_stateChanged(int arg1)
+{
+      if(arg1 > 0)
+      {
+        ui->statusbar->showMessage("Checkbox marcado!");
+      }
+      else
+      {
+        ui->statusbar->showMessage("Nao marcado checkbox!");
+      }
 }
 

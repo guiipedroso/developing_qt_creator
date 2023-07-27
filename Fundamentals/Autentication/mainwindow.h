@@ -18,6 +18,8 @@ public:
 private slots:
     void on_btn_send_clicked();
 
+    void on_check_login_stateChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 };
