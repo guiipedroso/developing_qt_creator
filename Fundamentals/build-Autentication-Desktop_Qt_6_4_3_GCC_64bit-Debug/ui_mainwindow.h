@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -28,7 +29,8 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QWidget *widget;
+    QLabel *label;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *login;
@@ -37,6 +39,7 @@ public:
     QLabel *senha;
     QLineEdit *line_senha;
     QHBoxLayout *horizontalLayout_3;
+    QCheckBox *check_login;
     QSpacerItem *horizontalSpacer;
     QPushButton *btn_send;
     QMenuBar *menubar;
@@ -49,20 +52,27 @@ public:
         MainWindow->resize(625, 381);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(70, 90, 471, 201));
-        verticalLayout = new QVBoxLayout(widget);
+        label = new QLabel(centralwidget);
+        label->setObjectName("label");
+        label->setGeometry(QRect(260, 30, 71, 31));
+        QFont font;
+        font.setPointSize(16);
+        font.setBold(true);
+        label->setFont(font);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(70, 90, 471, 201));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        login = new QLabel(widget);
+        login = new QLabel(layoutWidget);
         login->setObjectName("login");
 
         horizontalLayout->addWidget(login);
 
-        line_login = new QLineEdit(widget);
+        line_login = new QLineEdit(layoutWidget);
         line_login->setObjectName("line_login");
 
         horizontalLayout->addWidget(line_login);
@@ -72,12 +82,12 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        senha = new QLabel(widget);
+        senha = new QLabel(layoutWidget);
         senha->setObjectName("senha");
 
         horizontalLayout_2->addWidget(senha);
 
-        line_senha = new QLineEdit(widget);
+        line_senha = new QLineEdit(layoutWidget);
         line_senha->setObjectName("line_senha");
         line_senha->setEchoMode(QLineEdit::Password);
 
@@ -88,11 +98,16 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
+        check_login = new QCheckBox(layoutWidget);
+        check_login->setObjectName("check_login");
+
+        horizontalLayout_3->addWidget(check_login);
+
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer);
 
-        btn_send = new QPushButton(widget);
+        btn_send = new QPushButton(layoutWidget);
         btn_send->setObjectName("btn_send");
 
         horizontalLayout_3->addWidget(btn_send);
@@ -117,8 +132,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         login->setText(QCoreApplication::translate("MainWindow", "Login:", nullptr));
         senha->setText(QCoreApplication::translate("MainWindow", "Senha:", nullptr));
+        check_login->setText(QCoreApplication::translate("MainWindow", "Mantenha logado", nullptr));
         btn_send->setText(QCoreApplication::translate("MainWindow", "Entrar", nullptr));
     } // retranslateUi
 
