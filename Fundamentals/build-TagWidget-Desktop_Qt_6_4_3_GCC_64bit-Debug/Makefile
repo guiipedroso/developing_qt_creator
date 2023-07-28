@@ -53,9 +53,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../TagWidget/main.C \
-		../TagWidget/mainwindow.C moc_mainwindow.cpp
+		../TagWidget/mainwindow.C qrc_images.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
+		qrc_images.o \
 		moc_mainwindow.o
 DIST          = /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/common/unix.conf \
@@ -317,6 +319,7 @@ DIST          = /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/qt_config.prf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/spec_post.prf \
+		../TagWidget/.qmake.stash \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/toolchain.prf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/default_pre.prf \
@@ -610,6 +613,7 @@ Makefile: ../TagWidget/TagWidget.pro /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/qt_config.prf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/toolchain.prf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/default_pre.prf \
@@ -631,6 +635,7 @@ Makefile: ../TagWidget/TagWidget.pro /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/yacc.prf \
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/lex.prf \
 		../TagWidget/TagWidget.pro \
+		../TagWidget/images.qrc \
 		/home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Widgets.prl \
 		/home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Gui.prl \
 		/home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Core.prl
@@ -895,6 +900,7 @@ Makefile: ../TagWidget/TagWidget.pro /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux
 /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/qt_config.prf:
 /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/toolchain.prf:
 /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/default_pre.prf:
@@ -916,6 +922,7 @@ Makefile: ../TagWidget/TagWidget.pro /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux
 /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/yacc.prf:
 /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/lex.prf:
 ../TagWidget/TagWidget.pro:
+../TagWidget/images.qrc:
 /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Widgets.prl:
 /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Gui.prl:
 /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Core.prl:
@@ -933,6 +940,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../TagWidget/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../TagWidget/mainwindow.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../TagWidget/main.C ../TagWidget/mainwindow.C $(DISTDIR)/
@@ -960,8 +968,19 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_images.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_images.cpp
+qrc_images.cpp: ../TagWidget/images.qrc \
+		/home/pedroso/Qt/6.4.3/gcc_64/libexec/rcc \
+		../TagWidget/icons/3d\ bar\ chart.png \
+		../TagWidget/icons/New\ document.png \
+		../TagWidget/icons/Apply.png \
+		../TagWidget/icons/Load.png \
+		../TagWidget/icons/Add.png \
+		../TagWidget/icons/Close.png
+	/home/pedroso/Qt/6.4.3/gcc_64/libexec/rcc -name images --no-zstd ../TagWidget/images.qrc -o qrc_images.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -1130,7 +1149,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1435,8 +1454,47 @@ mainwindow.o: ../TagWidget/mainwindow.C ../TagWidget/mainwindow.h \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/QTransform \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qnativeinterface.h \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qtabwidget.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/QVariant \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QApplication \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qapplication.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qeventloop.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qcoreapplication_platform.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qjnitypes.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qfuture.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qfutureinterface.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qmutex.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qtsan_impl.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qresultstore.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qfuture_impl.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qthreadpool.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qthread.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qdeadlinetimer.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qelapsedtimer.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qrunnable.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qexception.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qpromise.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/qguiapplication.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/qinputmethod.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qlocale.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/qguiapplication_platform.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QLabel \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qlabel.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qframe.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/qpicture.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/qtextdocument.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QMenuBar \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qmenubar.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qmenu.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QStatusBar \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QTabWidget \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../TagWidget/mainwindow.C
+
+qrc_images.o: qrc_images.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_images.o qrc_images.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

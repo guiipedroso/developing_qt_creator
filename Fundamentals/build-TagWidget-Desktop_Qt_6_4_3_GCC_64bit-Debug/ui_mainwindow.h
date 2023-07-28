@@ -10,12 +10,16 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,57 +27,73 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionNovo_Documento;
     QWidget *centralwidget;
+    QVBoxLayout *verticalLayout;
     QTabWidget *tabWidget;
     QWidget *tab;
-    QLabel *label;
-    QWidget *tab_2;
-    QLabel *label_2;
-    QWidget *tab_3;
+    QVBoxLayout *verticalLayout_2;
+    QPlainTextEdit *plainTextEdit;
     QMenuBar *menubar;
+    QMenu *menuArquivo;
     QStatusBar *statusbar;
+    QToolBar *toolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(577, 481);
+        MainWindow->resize(577, 495);
+        actionNovo_Documento = new QAction(MainWindow);
+        actionNovo_Documento->setObjectName("actionNovo_Documento");
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icons/New document.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionNovo_Documento->setIcon(icon);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        verticalLayout = new QVBoxLayout(centralwidget);
+        verticalLayout->setObjectName("verticalLayout");
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName("tabWidget");
-        tabWidget->setGeometry(QRect(50, 60, 461, 341));
         tabWidget->setDocumentMode(false);
         tabWidget->setTabsClosable(true);
         tabWidget->setMovable(false);
         tabWidget->setTabBarAutoHide(false);
         tab = new QWidget();
         tab->setObjectName("tab");
-        label = new QLabel(tab);
-        label->setObjectName("label");
-        label->setGeometry(QRect(70, 90, 201, 111));
+        verticalLayout_2 = new QVBoxLayout(tab);
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        plainTextEdit = new QPlainTextEdit(tab);
+        plainTextEdit->setObjectName("plainTextEdit");
+        plainTextEdit->setStyleSheet(QString::fromUtf8("border:nome;"));
+
+        verticalLayout_2->addWidget(plainTextEdit);
+
         tabWidget->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName("tab_2");
-        label_2 = new QLabel(tab_2);
-        label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(120, 110, 191, 91));
-        tabWidget->addTab(tab_2, QString());
-        tab_3 = new QWidget();
-        tab_3->setObjectName("tab_3");
-        tabWidget->addTab(tab_3, QString());
+
+        verticalLayout->addWidget(tabWidget);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 577, 22));
+        menuArquivo = new QMenu(menubar);
+        menuArquivo->setObjectName("menuArquivo");
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
+        toolBar = new QToolBar(MainWindow);
+        toolBar->setObjectName("toolBar");
+        MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
+
+        menubar->addAction(menuArquivo->menuAction());
+        menuArquivo->addAction(actionNovo_Documento);
+        toolBar->addAction(actionNovo_Documento);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -82,11 +102,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Essa \303\251 minha primeira tab", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Essa \303\251 minha segunda tab", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Last tab", nullptr));
+        actionNovo_Documento->setText(QCoreApplication::translate("MainWindow", "Novo Documento", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Novo Documento", nullptr));
+        menuArquivo->setTitle(QCoreApplication::translate("MainWindow", "Arquivo", nullptr));
+        toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
 };
