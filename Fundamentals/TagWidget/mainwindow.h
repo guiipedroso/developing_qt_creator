@@ -13,7 +13,13 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    signed short int tabNum = 0;
     ~MainWindow();
+
+private slots:
+    void on_tabWidget_tabCloseRequested(int index);
+
+    void on_actionNovo_Documento_triggered();
 
 private:
     Ui::MainWindow *ui;
