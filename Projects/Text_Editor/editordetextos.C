@@ -178,7 +178,23 @@ void EditorDeTextos::on_actionFonte_triggered()
 
 void EditorDeTextos::on_actionSobre_Devs_triggered()
 {
-      QString link("https://github.com/guiipedroso");
-      QUrl url(link);
+    QString link("https://github.com/guiipedroso");
+    QUrl url(link);
+}
+
+
+void EditorDeTextos::on_actionImprimir_triggered()
+{
+    QPrinter printer;
+    QPrintDialog dialog_printer;
+
+    if(dialog_printer.exec() ==  QDialog::Rejected)
+      {
+      return;
+      }
+    else
+      {
+      ui->textEdit->print( &printer);
+      }
 }
 

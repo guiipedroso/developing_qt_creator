@@ -42,6 +42,7 @@
     <addaction name="actionAbrir"/>
     <addaction name="actionSalvar"/>
     <addaction name="actionSalvar_como"/>
+    <addaction name="actionImprimir"/>
     <addaction name="actionSair"/>
    </widget>
    <widget class="QMenu" name="menuEditar">
@@ -241,6 +242,15 @@
    </property>
    <property name="text">
     <string>Sobre Devs</string>
+   </property>
+  </action>
+  <action name="actionImprimir">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons-text-edit/print.png</normaloff>:/icons-text-edit/print.png</iconset>
+   </property>
+   <property name="text">
+    <string>Imprimir</string>
    </property>
   </action>
  </widget>

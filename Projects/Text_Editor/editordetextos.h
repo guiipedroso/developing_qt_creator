@@ -11,6 +11,8 @@
 #include <QColor>
 #include <QColorDialog>
 #include <QUrl>
+#include <QPrintDialog>
+#include <QPrinter>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class EditorDeTextos; }
@@ -54,6 +56,8 @@ private slots:
     void on_actionFonte_triggered();
 
     void on_actionSobre_Devs_triggered();
+
+    void on_actionImprimir_triggered();
 
 private:
     Ui::EditorDeTextos *ui;
