@@ -39,6 +39,7 @@ public:
     QAction *actionBackground;
     QAction *actionFonte;
     QAction *actionSobre_Devs;
+    QAction *actionImprimir;
     QWidget *centralwidget;
     QTextEdit *textEdit;
     QMenuBar *menubar;
@@ -122,6 +123,11 @@ public:
         QIcon icon12;
         icon12.addFile(QString::fromUtf8(":/icons-text-edit/about.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionSobre_Devs->setIcon(icon12);
+        actionImprimir = new QAction(EditorDeTextos);
+        actionImprimir->setObjectName("actionImprimir");
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/icons-text-edit/print.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionImprimir->setIcon(icon13);
         centralwidget = new QWidget(EditorDeTextos);
         centralwidget->setObjectName("centralwidget");
         textEdit = new QTextEdit(centralwidget);
@@ -156,6 +162,7 @@ public:
         menuArquivo->addAction(actionAbrir);
         menuArquivo->addAction(actionSalvar);
         menuArquivo->addAction(actionSalvar_como);
+        menuArquivo->addAction(actionImprimir);
         menuArquivo->addAction(actionSair);
         menuEditar->addAction(actionCopiar);
         menuEditar->addAction(actionColar);
@@ -218,6 +225,7 @@ public:
         actionBackground->setText(QCoreApplication::translate("EditorDeTextos", "Background", nullptr));
         actionFonte->setText(QCoreApplication::translate("EditorDeTextos", "Fonte", nullptr));
         actionSobre_Devs->setText(QCoreApplication::translate("EditorDeTextos", "Sobre Devs", nullptr));
+        actionImprimir->setText(QCoreApplication::translate("EditorDeTextos", "Imprimir", nullptr));
         menuArquivo->setTitle(QCoreApplication::translate("EditorDeTextos", "Arquivo", nullptr));
         menuEditar->setTitle(QCoreApplication::translate("EditorDeTextos", "Editar", nullptr));
         menuFormatar->setTitle(QCoreApplication::translate("EditorDeTextos", "Formatar", nullptr));

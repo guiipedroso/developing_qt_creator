@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -Wextra -fPIC -D_REENTRANT $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++1z -Wall -Wextra -fPIC -D_REENTRANT $(DEFINES)
-INCPATH       = -I../Text_Editor -I. -I/home/pedroso/Qt/6.4.3/gcc_64/include -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore -I. -I. -I/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../Text_Editor -I. -I/home/pedroso/Qt/6.4.3/gcc_64/include -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore -I. -I. -I/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/pedroso/Qt/6.4.3/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = Text_Editor1.0.0
 DISTDIR = /home/pedroso/Documentos/Projects/developing_qt_creator/Projects/build-Text_Editor-Desktop_Qt_6_4_3_GCC_64bit-Debug/.tmp/Text_Editor1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/pedroso/Qt/6.4.3/gcc_64/lib -Wl,-rpath-link,/home/pedroso/Qt/6.4.3/gcc_64/lib
-LIBS          = $(SUBLIBS) /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Widgets.so /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Gui.so /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Core.so -lpthread -lGL   
+LIBS          = $(SUBLIBS) /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6PrintSupport.so /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Widgets.so /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Gui.so /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Core.so -lpthread -lGL   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -636,6 +636,7 @@ Makefile: ../Text_Editor/Text_Editor.pro /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/l
 		/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/lex.prf \
 		../Text_Editor/Text_Editor.pro \
 		../Text_Editor/images.qrc \
+		/home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6PrintSupport.prl \
 		/home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Widgets.prl \
 		/home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Gui.prl \
 		/home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Core.prl
@@ -923,6 +924,7 @@ Makefile: ../Text_Editor/Text_Editor.pro /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/l
 /home/pedroso/Qt/6.4.3/gcc_64/mkspecs/features/lex.prf:
 ../Text_Editor/Text_Editor.pro:
 ../Text_Editor/images.qrc:
+/home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6PrintSupport.prl:
 /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Widgets.prl:
 /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Gui.prl:
 /home/pedroso/Qt/6.4.3/gcc_64/lib/libQt6Core.prl:
@@ -1159,9 +1161,23 @@ moc_editordetextos.cpp: ../Text_Editor/editordetextos.h \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/QTextStream \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QMessageBox \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QFontDialog \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qfontdialog.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/QFont \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/QColor \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QColorDialog \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qcolordialog.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/QUrl \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/QPrintDialog \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qprintdialog.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qtprintsupportglobal.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qtprintsupport-config.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qtprintsupportexports.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qabstractprintdialog.h \
+		../Text_Editor \
 		moc_predefs.h \
 		/home/pedroso/Qt/6.4.3/gcc_64/libexec/moc
-	/home/pedroso/Qt/6.4.3/gcc_64/libexec/moc $(DEFINES) --include /home/pedroso/Documentos/Projects/developing_qt_creator/Projects/build-Text_Editor-Desktop_Qt_6_4_3_GCC_64bit-Debug/moc_predefs.h -I/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux-g++ -I/home/pedroso/Documentos/Projects/developing_qt_creator/Projects/Text_Editor -I/home/pedroso/Qt/6.4.3/gcc_64/include -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Text_Editor/editordetextos.h -o moc_editordetextos.cpp
+	/home/pedroso/Qt/6.4.3/gcc_64/libexec/moc $(DEFINES) --include /home/pedroso/Documentos/Projects/developing_qt_creator/Projects/build-Text_Editor-Desktop_Qt_6_4_3_GCC_64bit-Debug/moc_predefs.h -I/home/pedroso/Qt/6.4.3/gcc_64/mkspecs/linux-g++ -I/home/pedroso/Documentos/Projects/developing_qt_creator/Projects/Text_Editor -I/home/pedroso/Qt/6.4.3/gcc_64/include -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui -I/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Text_Editor/editordetextos.h -o moc_editordetextos.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1336,6 +1352,20 @@ main.o: ../Text_Editor/main.C ../Text_Editor/editordetextos.h \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/QTextStream \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QMessageBox \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QFontDialog \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qfontdialog.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/QFont \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/QColor \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QColorDialog \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qcolordialog.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/QUrl \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/QPrintDialog \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qprintdialog.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qtprintsupportglobal.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qtprintsupport-config.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qtprintsupportexports.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qabstractprintdialog.h \
+		../Text_Editor \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QApplication \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qapplication.h \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1512,6 +1542,20 @@ editordetextos.o: ../Text_Editor/editordetextos.C ../Text_Editor/editordetextos.
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/QTextStream \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QMessageBox \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QFontDialog \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qfontdialog.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/QFont \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/QColor \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QColorDialog \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qcolordialog.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/QUrl \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/QPrintDialog \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qprintdialog.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qtprintsupportglobal.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qtprintsupport-config.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qtprintsupportexports.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtPrintSupport/qabstractprintdialog.h \
+		../Text_Editor \
 		ui_editordetextos.h \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtCore/QVariant \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/QAction \
@@ -1543,6 +1587,17 @@ editordetextos.o: ../Text_Editor/editordetextos.C ../Text_Editor/editordetextos.
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qmenubar.h \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QStatusBar \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QTextEdit \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qtextedit.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qframe.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/qtextdocument.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/qtextoption.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/qtextcursor.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/qtextformat.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtGui/qpen.h \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QToolBar \
+		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/qtoolbar.h \
 		/home/pedroso/Qt/6.4.3/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o editordetextos.o ../Text_Editor/editordetextos.C
 
