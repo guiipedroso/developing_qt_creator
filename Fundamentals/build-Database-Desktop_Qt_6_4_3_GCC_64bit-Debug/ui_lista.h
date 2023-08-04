@@ -12,18 +12,30 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QTableWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Lista
 {
 public:
+    QGridLayout *gridLayout;
+    QTableWidget *tableWidget;
 
     void setupUi(QDialog *Lista)
     {
         if (Lista->objectName().isEmpty())
             Lista->setObjectName("Lista");
-        Lista->resize(594, 398);
+        Lista->resize(565, 387);
+        gridLayout = new QGridLayout(Lista);
+        gridLayout->setObjectName("gridLayout");
+        tableWidget = new QTableWidget(Lista);
+        tableWidget->setObjectName("tableWidget");
+
+        gridLayout->addWidget(tableWidget, 0, 0, 1, 1);
+
 
         retranslateUi(Lista);
 
