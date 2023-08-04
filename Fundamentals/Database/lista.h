@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QtSql>
+#include <QDebug>
 
 namespace Ui {
 class Lista;

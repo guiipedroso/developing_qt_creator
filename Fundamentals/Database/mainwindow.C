@@ -53,7 +53,6 @@ void MainWindow::on_pushButton_clicked()
       {
       QMessageBox::critical(this, "Erro", "Falha ao inserir dados");
       }
-
 }
 
 void MainWindow::on_pushButton_2_clicked()
