@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/sobre.png</file>
+        <file>images/fazer.png</file>
+        <file>images/desligar.png</file>
+        <file>todo.db</file>
+    </qresource>
+</RCC>
